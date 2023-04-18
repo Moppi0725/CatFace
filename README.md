@@ -39,5 +39,10 @@ cwf [オプション] <県名>
 ### 開発者
 - 大塚智貴
 
+### 名前の由来
+「文字天気予報」は英語で「Character weather forecast」であること，  
+日本のことわざの「猫が顔を洗うと雨」から「猫が顔を洗う」を取り出して英訳した「Cats wash their faces.」  
+から頭文字を取って「cwf」と名前をつけた
+
 ### アイコン
 <img src="https://github.com/Moppi0725/cwf/blob/main/docs/static/images/cwf.svg" width="200">
