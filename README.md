@@ -24,7 +24,7 @@ cwf [オプション] <県名>
   未定
   
 ## プロジェクトについて
-### License  
+### ライセンス
   [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 - 許可  
   - 商用利用
@@ -35,3 +35,8 @@ cwf [オプション] <県名>
 - 制限事項
   - 賠償責任
   - 保証
+
+### 開発者
+- 大塚智貴
+
+### アイコン
