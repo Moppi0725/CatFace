@@ -25,4 +25,4 @@ cwf [オプション] <県名>
   
 ## プロジェクトについて
   License
-  [![MIT License]](LICENSE)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
