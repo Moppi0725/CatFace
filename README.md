@@ -26,12 +26,12 @@ cwf [オプション] <県名>
 ## プロジェクトについて
 ### License  
   [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-- 許可
--- 商用利用
--- 修正
--- 再頒布
--- 個人使用
+-許可  
+--商用利用  
+--修正  
+--再頒布  
+--個人使用  
 
-- 制限事項
--- 賠償責任
--- 保証
+-制限事項  
+--賠償責任  
+--保証  
