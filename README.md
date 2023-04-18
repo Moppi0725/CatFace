@@ -40,4 +40,4 @@ cwf [オプション] <県名>
 - 大塚智貴
 
 ### アイコン
-[![Icon](https://github.com/Moppi0725/cwf/blob/main/docs/static/images/cwf.svg)](docs/static/images/cwf.svg)
+![Icon](https://github.com/Moppi0725/cwf/blob/main/docs/static/images/cwf.svg)
