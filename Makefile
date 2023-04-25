@@ -3,5 +3,5 @@ cwf:
 	go build -o cwf $(PACAKAGE_LIST)
 test:
 	go test $(PACAKAGE_LIST)
-clen:
+clean:
 	rm -f cwf
