@@ -1,14 +1,13 @@
-GO=go
-SHELL=/bin/bash
+PACKAGE_LIST := $(shell go list ./...)
+VERSION := 0.1.16
 NAME := cwf
-VERSION := 1.2.0
 DIST := $(NAME)-$(VERSION)
-PACAKAGE_LIST := $(shell go list ./...)
-cwf:
+
+cwf: coverage.out
 	go build -o cwf $(PACAKAGE_LIST)
 
 test:
-	go test $(PACAKAGE_LIST) -covermode=count -coverprofile=coverage.out $(PACKAGE_LIST)
+	go test -covermode=count -coverprofile=coverage.out $(PACKAGE_LIST)
 	
 clean:
-	rm -f cwf
+	rm -f cwf coverage.out
