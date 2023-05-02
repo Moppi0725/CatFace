@@ -11,7 +11,7 @@ coverage.out:
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 
 docker: cwf
-#	docker build -t ghcr.io/Moppi0725/cwf:$(VERSION) -t ghcr.io/tamada/cwf:latest .
+#	docker build -t ghcr.io/Moppi0725/cwf:$(VERSION) -t ghcr.io/Moppi0725/cwf:latest .
 	docker buildx build -t ghcr.io/Moppi0725/cwf:$(VERSION) \
 		-t ghcr.io/Moppi0725/cwf:latest --platform=linux/arm64/v8,linux/amd64 --push .
 
