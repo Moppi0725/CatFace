@@ -11,9 +11,9 @@ coverage.out:
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 
 docker: cwf
-#	docker build -t ghcr.io/tamada/cwf:$(VERSION) -t ghcr.io/tamada/cwf:latest .
-	docker buildx build -t ghcr.io/tamada/cwf:$(VERSION) \
-		-t ghcr.io/tamada/cwf:latest --platform=linux/arm64/v8,linux/amd64 --push .
+#	docker build -t ghcr.io/Moppi0725/cwf:$(VERSION) -t ghcr.io/tamada/cwf:latest .
+	docker buildx build -t ghcr.io/Moppi0725/cwf:$(VERSION) \
+		-t ghcr.io/Moppi0725/cwf:latest --platform=linux/arm64/v8,linux/amd64 --push .
 
 # refer from https://pod.hatenablog.com/entry/2017/06/13/150342
 define _createDist
