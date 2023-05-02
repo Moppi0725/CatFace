@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func Example_Main() { g
-	oMain([]string{})
+	goMain([]string{})
 	// Output:
   	// Hello World
 }
