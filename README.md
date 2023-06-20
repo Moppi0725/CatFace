@@ -50,4 +50,4 @@ cwf [オプション] <県名>
 から頭文字を取って「cwf」と名前をつけた
 
 ### アイコン
-<img src="https://github.com/Moppi0725/cwf/blob/main/docs/static/images/cwf.svg" width="200">
+<img src="https://github.com/Moppi0725/cwf/blob/main/pictures/static/images/cwf.svg" width="200">
