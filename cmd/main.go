@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/moppi0725/cwf"
 	flag "github.com/spf13/pflag"
-	//"github.com/moppi0725/cwf"
 )
 
 const VERSION = "0.0.1"
@@ -67,18 +67,6 @@ func newOptions() *options {
 	return &options{runOpt: &runOpts{}, flagSet: &flags{}}
 }
 
-/*
-func (opts *options) mode(args []string) cwf.Mode {
-	switch {
-	case opts.runOpt.qrcode != "":
-		return urleap.QRCode
-	default:
-		return urleap.Shorten
-	}
-}
-*/
-//適宜修正↑
-
 func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
@@ -92,7 +80,6 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 func parseOptions(args []string) (*options, []string, *CwfError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
-
 	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &CwfError{statusCode: 0, message: ""}
@@ -104,77 +91,27 @@ func parseOptions(args []string) (*options, []string, *CwfError) {
 	return opts, flags.Args(), nil
 }
 
-// ↓適宜修正
-// func shortenEach(bitly *urleap.Bitly, config *urleap.Config, url string) error {
-// 	result, err := bitly.Shorten(config, url)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	fmt.Println(result)
-// 	return nil
-// }
+func perform(opts *options, args []string) *CwfError {
+	switch {
+	case opts.runOpt.week != "":
+		city, err := cwf.GetCityInfo(opts.runOpt.week)
+		fmt.Println(city, err)
+		date, weathercode, err := cwf.MakeWeekUrl(city, "w")
+		for i := range date {
+			fmt.Printf("%s  %s\n", date[i], weathercode[i])
+		}
+		return nil
 
-// func deleteEach(bitly *urleap.Bitly, config *urleap.Config, url string) error {
-// 	return bitly.Delete(config, url)
-// }
-
-// func listUrls(bitly *urleap.Bitly, config *urleap.Config) error {
-// 	urls, err := bitly.List(config)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	for _, url := range urls {
-// 		fmt.Println(url)
-// 	}
-// 	return nil
-// }
-
-// func listGroups(bitly *urleap.Bitly, config *urleap.Config) error {
-// 	groups, err := bitly.Groups(config)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	for i, group := range groups {
-// 		fmt.Printf("GUID[%d] %s\n", i, group.Guid)
-// 	}
-// 	return nil
-// }
-
-// func performImpl(args []string, executor func(url string) error) *UrleapError {
-// 	for _, url := range args {
-// 		err := executor(url)
-// 		if err != nil {
-// 			return makeError(err, 3)
-// 		}
-// 	}
-// 	return nil
-// }
-
-// 5/30ここの修正
-// func perform(opts *options, args []string) *UrleapError {
-// 	bitly := urleap.NewBitly(opts.runOpt.group)
-// 	config := urleap.NewConfig(opts.runOpt.config, opts.mode(args))
-// 	config.Token = opts.runOpt.token
-// 	switch config.RunMode {
-// 	case urleap.List:
-// 		err := listUrls(bitly, config)
-// 		return makeError(err, 1)
-// 	case urleap.ListGroup:
-// 		err := listGroups(bitly, config)
-// 		return makeError(err, 2)
-// 	case urleap.Delete:
-// 		return performImpl(args, func(url string) error {
-// 			return deleteEach(bitly, config, url)
-// 		})
-// 	case urleap.Shorten:
-// 		return performImpl(args, func(url string) error {
-// 			return shortenEach(bitly, config, url)
-// 		})
-// 	}
-// 	return nil
-// }
-
-//↑適宜修正
+	default:
+		city, err := cwf.GetCityInfo(args[0])
+		fmt.Println(city, err)
+		date, weathercode, err := cwf.MakedayUrl(city, "d")
+		for i := range date {
+			fmt.Printf("%s  %s\n", date[i], weathercode[i])
+		}
+		return nil
+	}
+}
 
 func makeError(err error, status int) *CwfError {
 	if err == nil {
@@ -188,8 +125,7 @@ func makeError(err error, status int) *CwfError {
 }
 
 func goMain(args []string) int {
-	//opts, args, err := parseOptions(args)
-	_, args, err := parseOptions(args)
+	opts, args, err := parseOptions(args)
 
 	if err != nil {
 		if err.statusCode != 0 {
@@ -197,10 +133,10 @@ func goMain(args []string) int {
 		}
 		return err.statusCode
 	}
-	// if err := perform(opts, args); err != nil {
-	// 	fmt.Println(err.Error())
-	// 	return err.statusCode
-	// }
+	if err := perform(opts, args); err != nil {
+		fmt.Println(err.Error())
+		return err.statusCode
+	}
 	return 0
 }
 
