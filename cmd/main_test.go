@@ -1,7 +1,5 @@
 package main
 
-import "testing"
-
 func Help() {
 	goMain([]string{"./cwf", "--help"})
 	// main cwf [オプション] <県名>
@@ -16,7 +14,7 @@ func Help() {
 	// 		県名    調べたい都道府県を指定する．
 }
 
-func Test_noOption_noCity(t *testing.T) {
+func Test_noOption_noCity() {
 	goMain([]string{"./cwf"})
 	// main cwf [オプション] <県名>
 
