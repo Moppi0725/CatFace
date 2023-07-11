@@ -3,10 +3,10 @@ VERSION := 0.1.16
 NAME := cwf
 DIST := $(NAME)-$(VERSION)
 
-cwf: coverage.out
-	go build -o cwf $(PACKAGE_LIST)
+cwf: coverage.out cmd/main.go *.go
+	go build -o cwf cmd/main.go
 
-coverage.out:
+coverage.out: cmd/main_test.go
 	go test -covermode=count \
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 
