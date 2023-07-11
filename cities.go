@@ -32,6 +32,8 @@ func serchCity(cityname string, cities []*City) (*City, error) {
 			return city, nil
 		}
 	}
-
+	if cityname == "" {
+		return nil, fmt.Errorf("%s: Please specify city", cityname)
+	}
 	return nil, fmt.Errorf("%s: city no found", cityname)
 }
