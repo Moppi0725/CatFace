@@ -1,0 +1,142 @@
+[
+  {
+    "code": "0",
+    "jp": "晴天",
+    "en": "Clear sky"
+  },
+  {
+    "code": "1",
+    "jp": "ほぼ晴れ",
+    "en": "Mainly clear"
+  },
+  {
+    "code": "2",
+    "jp": "曇りがち",
+    "en": "Partly cloudy"
+  },
+  {
+    "code": "3",
+    "jp": "どんよりした空",
+    "en": "Overcast"
+  },
+  {
+    "code": "45",
+    "jp": "霧と霜の降着",
+    "en": "Fog and depositing rime fog"
+  },
+  {
+    "code": "48",
+    "jp": "霧と霜の降着",
+    "en": "Fog and depositing rime fog"
+  },
+  {
+    "code": "51",
+    "jp": "霧雨: 軽い",
+    "en": "Drizzle: Light"
+  },
+  {
+    "code": "53",
+    "jp": "霧雨: 中程度",
+    "en": "Drizzle: Moderate"
+  },
+  {
+    "code": "55",
+    "jp": "霧雨: 濃い強度",
+    "en": "Drizzle: Dense intensity"
+  },
+  {
+    "code": "56",
+    "jp": "氷結霧雨: 軽い強度",
+    "en": "Freezing drizzle: Light intensity"
+  },
+  {
+    "code": "57",
+    "jp": "氷結霧雨: 濃い強度",
+    "en": "Freezing drizzle: Dense intensity"
+  },
+  {
+    "code": "61",
+    "jp": "雨: 弱い",
+    "en": "Rain: Slight intensity"
+  },
+  {
+    "code": "63",
+    "jp": "雨: 中程度",
+    "en": "Rain: Moderate intensity"
+  },
+  {
+    "code": "65",
+    "jp": "雨: 激しい",
+    "en": "Rain: Heavy intensity"
+  },
+  {
+    "code": "66",
+    "jp": "凍結した雨: 弱い強度",
+    "en": "Freezing rain: Light intensity"
+  },
+  {
+    "code": "67",
+    "jp": "凍結した雨: 強い強度",
+    "en": "Freezing rain: Heavy intensity"
+  },
+  {
+    "code": "71",
+    "jp": "降雪量: 弱い",
+    "en": "Snowfall: Slight intensity"
+  },
+  {
+    "code": "73",
+    "jp": "降雪量: 中程度",
+    "en": "Snowfall: Moderate intensity"
+  },
+  {
+    "code": "75",
+    "jp": "降雪量: 激しい",
+    "en": "Snowfall: Heavy intensity"
+  },
+  {
+    "code": "77",
+    "jp": "粉雪",
+    "en": "Snow grains"
+  },
+  {
+    "code": "80",
+    "jp": "にわか雨: 弱い",
+    "en": "Rain showers: Slight intensity"
+  },
+  {
+    "code": "81",
+    "jp": "にわか雨: 中程度",
+    "en": "Rain showers: Moderate intensity"
+  },
+  {
+    "code": "82",
+    "jp": "にわか雨: 強い",
+    "en": "Rain showers: Violent intensity"
+  },
+  {
+    "code": "85",
+    "jp": "雪のにわか: 弱い",
+    "en": "Snow showers: Slight intensity"
+  },
+  {
+    "code": "86",
+    "jp": "雪のにわか: 強い",
+    "en": "Snow showers: Heavy intensity"
+  },
+  {
+    "code": "95",
+    "jp": "雷雨: 弱いまたは中程度",
+    "en": "Thunderstorm: Slight or moderate"
+  },
+  {
+    "code": "96",
+    "jp": "雷雨: 弱いひょうを伴う",
+    "en": "Thunderstorm with slight hail"
+  },
+  {
+    "code": "99",
+    "jp": "雷雨: 強いひょうを伴う",
+    "en": "Thunderstorm with heavy hail"
+  }
+]

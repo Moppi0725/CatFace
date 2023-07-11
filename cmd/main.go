@@ -36,7 +36,6 @@ func helpMessage(args []string) string {
 		県名    調べたい都道府県を指定する．`, prog)
 }
 
-// ↓適宜修正↓
 type CwfError struct {
 	statusCode int
 	message    string
@@ -80,7 +79,7 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 func parseOptions(args []string) (*options, []string, *CwfError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
-	if opts.flagSet.helpFlag {
+	if opts.flagSet.helpFlag || len(args) <= 1 {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &CwfError{statusCode: 0, message: ""}
 	}
@@ -92,25 +91,44 @@ func parseOptions(args []string) (*options, []string, *CwfError) {
 }
 
 func perform(opts *options, args []string) *CwfError {
+	var mode string
+	var cityname string
 	switch {
 	case opts.runOpt.week != "":
-		city, err := cwf.GetCityInfo(opts.runOpt.week)
-		fmt.Println(city, err)
-		date, weathercode, err := cwf.MakeWeekUrl(city, "w")
-		for i := range date {
-			fmt.Printf("%s  %s\n", date[i], weathercode[i])
-		}
-		return nil
-
+		cityname = opts.runOpt.week
+		mode = "w"
 	default:
-		city, err := cwf.GetCityInfo(args[0])
-		fmt.Println(city, err)
-		date, weathercode, err := cwf.MakedayUrl(city, "d")
-		for i := range date {
-			fmt.Printf("%s  %s\n", date[i], weathercode[i])
-		}
-		return nil
+		cityname = args[0]
+		mode = "d"
 	}
+	city, err := cwf.GetCityInfo(cityname)
+	if err == nil {
+		return getResult(city, mode)
+	} else {
+		return &CwfError{statusCode: 0, message: fmt.Sprint(err)}
+	}
+}
+func getResult(city *cwf.City, mode string) *CwfError {
+	time, weathercode, err := cwf.MakeUrl(city, mode)
+	if err == nil {
+		return outputResult(time, weathercode)
+	} else {
+		return &CwfError{statusCode: 0, message: fmt.Sprint(err)}
+	}
+}
+func outputResult(time []string, weathercode []int) *CwfError {
+	weatherMap, err := cwf.GetWeatherMap()
+	if err != nil {
+		return &CwfError{statusCode: 0, message: fmt.Sprint(err)}
+	}
+	for i := range time {
+		if weather, err := cwf.OutputWeather(weatherMap, weathercode[i]); err == nil {
+			fmt.Printf("%s  %s\n", time[i], weather)
+		} else {
+			return &CwfError{statusCode: 0, message: fmt.Sprint(err)}
+		}
+	}
+	return nil
 }
 
 func makeError(err error, status int) *CwfError {
