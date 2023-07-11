@@ -79,7 +79,8 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 func parseOptions(args []string) (*options, []string, *CwfError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
-	if opts.flagSet.helpFlag || len(args) <= 1 {
+	// フラグが立っている時orオプションも街も指定されていない時or-wが指定されているが街が指定されていない時
+	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &CwfError{statusCode: 0, message: ""}
 	}
@@ -97,7 +98,7 @@ func perform(opts *options, args []string) *CwfError {
 	case opts.runOpt.week != "":
 		cityname = opts.runOpt.week
 		mode = "w"
-	default:
+	case len(args) > 0:
 		cityname = args[0]
 		mode = "d"
 	}
@@ -105,6 +106,7 @@ func perform(opts *options, args []string) *CwfError {
 	if err == nil {
 		return getResult(city, mode)
 	} else {
+		fmt.Println(helpMessage(args))
 		return &CwfError{statusCode: 0, message: fmt.Sprint(err)}
 	}
 }
