@@ -50,6 +50,8 @@ type flags struct {
 	versionFlag bool
 }
 
+var completions bool
+
 type runOpts struct {
 	week string
 }
@@ -73,13 +75,18 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags.StringVarP(&opts.runOpt.week, "week", "w", "", "このオプションはその週の天気予報を出力します．")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "このメッセージを出力して終了する")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョンを出力して終了する")
+	flags.BoolVarP(&completions, "generate-completions", "", false, "completionsを生成します.")
+	flags.MarkHidden("generate-completions")
 	return opts, flags
 }
 
 func parseOptions(args []string) (*options, []string, *CwfError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
-	// フラグが立っている時orオプションも街も指定されていない時or-wが指定されているが街が指定されていない時
+	if completions {
+		fmt.Println("GenerateCompletion")
+		GenerateCompletion(flags)
+	}
 	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &CwfError{statusCode: 0, message: ""}
