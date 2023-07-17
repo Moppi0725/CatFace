@@ -1,5 +1,5 @@
 # cwf
-ターミナル上に文字で天気を知ることができるCLI（コマンドラインインターフェース）
+ターミナル上で天気を知ることができるCLI（コマンドラインインターフェース）
   
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/Moppi0725/cwf/badge.svg?branch=main)](https://coveralls.io/github/Moppi0725/cwf?branch=main)
