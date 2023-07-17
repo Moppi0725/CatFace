@@ -39,3 +39,10 @@ func Test_Option_city(t *testing.T) {
 		t.Error("Expected 0, got ", status)
 	}
 }
+
+func Example_Completion() {
+	goMain([]string{"./cwf", "--generate-completions"})
+	// Output:
+	// GenerateCompletion
+	// アクセストークンを入力してください。
+}
