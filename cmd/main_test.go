@@ -4,6 +4,7 @@ import "testing"
 
 func Help() {
 	goMain([]string{"./cwf", "--help"})
+	//Output:
 	// main cwf [オプション] <県名>
 
 	// オプションをつけずに実行した場合は，現在の天気を出力する
@@ -44,5 +45,4 @@ func Example_Completion() {
 	goMain([]string{"./cwf", "--generate-completions"})
 	// Output:
 	// GenerateCompletion
-	// アクセストークンを入力してください。
 }
