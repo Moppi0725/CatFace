@@ -8,7 +8,7 @@ cwf: coverage.out cmd/main.go *.go
 	./cwf --generate-completions
 # go build -o $(NAME) cmd/main.go
 
-coverage.out: #cmd/main_test.go
+coverage.out: cmd/main_test.go
 	go test -covermode=count \
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 
