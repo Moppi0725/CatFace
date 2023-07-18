@@ -86,6 +86,7 @@ func parseOptions(args []string) (*options, []string, *CwfError) {
 	if completions {
 		fmt.Println("GenerateCompletion")
 		GenerateCompletion(flags)
+		return nil, nil, &CwfError{statusCode: 0, message: ""}
 	}
 	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
