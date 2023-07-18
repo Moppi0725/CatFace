@@ -3,11 +3,12 @@ VERSION := 0.1.16
 NAME := cwf
 DIST := $(NAME)-$(VERSION)
 
-cwf: coverage.out # cmd/main.go *.go
+cwf: coverage.out cmd/main.go *.go
 	go build -o $(NAME) cmd/main.go cmd/generate_completion.go
+	./cwf --generate-completions
 # go build -o $(NAME) cmd/main.go
 
-coverage.out: #cmd/main_test.go
+coverage.out: cmd/main_test.go
 	go test -covermode=count \
 		-coverprofile=coverage.out $(PACKAGE_LIST)
 

@@ -17,10 +17,10 @@ func Help() {
 	// 					県名    調べたい都道府県を指定する．
 }
 
-func Test_Completion(t *testing.T) {
-	if status := goMain([]string{"./cwf", "--generate-completions"}); status != 0 {
-		t.Error("Expected 0, got ", status)
-	}
+func Completion() {
+	goMain([]string{"./yubs", "--generate-completions"})
+	// Output:
+	// GenerateCompletion
 }
 
 func Test_noOption_noCity(t *testing.T) {
